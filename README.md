@@ -1,2 +1,2 @@
 # TCAStackNav
-A SwiftUI Navigation Library to be used in conjunction with The Composable Architecture
+A SwiftUI Coordinator Pattern to be used in conjunction with The Composable Architecture
