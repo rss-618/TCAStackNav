@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import ComposableArchitecture
 
 public protocol NavStateProtocol {
     associatedtype Screen: ScreenProtocol
-    
-    var stack: [Wrapper<Screen>] { get set }
+    var stack: StackState<Screen.State> { get set }
 }

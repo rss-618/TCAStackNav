@@ -9,7 +9,6 @@ import Foundation
 import ComposableArchitecture
 
 public protocol NavActionProtocol {
-    associatedtype Action
-    
-    static func nodeAction(_ index: Int, action: Action) -> Self
+    associatedtype Screen: ScreenProtocol
+    static func stack(_: StackAction<Screen.State, Screen.Action>) -> Self
 }

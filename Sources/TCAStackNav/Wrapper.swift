@@ -8,7 +8,12 @@
 import Foundation
 import ComposableArchitecture
 
-public enum Wrapper<Screen: ScreenProtocol> {
+public enum Wrapper<Screen: Hashable>: Hashable {
+    
+    public static func == (lhs: Wrapper<Screen>, rhs: Wrapper<Screen>) -> Bool {
+        lhs.screen == rhs.screen
+    }
+    
     
     case push(Screen, animation: WrapprAnimation = .basic)
     
@@ -26,13 +31,6 @@ public enum Wrapper<Screen: ScreenProtocol> {
         }
       }
     }
-}
-
-extension Wrapper: Hashable {
-    public static func == (lhs: Wrapper, rhs: Wrapper) -> Bool {
-        lhs.screen == rhs.screen
-    }
-    
 }
 
 public enum WrapprAnimation {

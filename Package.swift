@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "TCAStackNav",
     platforms: [
-      .iOS(.v16) // TOOO: Add a downported version of NavigationStacks to reach v13
+      .iOS(.v16), .macOS(.v13) // TOOO: Add a downported version of NavigationStacks to reach v13
     ],
     products: [
         .library(
@@ -18,7 +18,7 @@ let package = Package(
         .target(
             name: "TCAStackNav",
             dependencies: [
-              .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]),
         .testTarget(
             name: "TCAStackNavTests",
