@@ -9,7 +9,7 @@ import SwiftUI
 import TCAStackNav
 import ComposableArchitecture
 
-public struct Screen: Reducer {
+public struct Screen: ScreenProtocol {    
     
     public enum State {
         case page(Page.State)
@@ -17,10 +17,6 @@ public struct Screen: Reducer {
     
     public enum Action {
         case page(Page.Action)
-    }
-    
-    public var caseLet: some View {
-        
     }
     
     public var body: some ReducerOf<Self> {
