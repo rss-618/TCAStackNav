@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol NavStateProtocol {
-    associatedtype Screen: ScreenProtocol
+    associatedtype Screen: Hashable
     
     var stack: [Wrapper<Screen>] { get set }
 }

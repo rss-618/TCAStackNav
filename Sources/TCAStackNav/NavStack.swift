@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 public struct NavStack<
-    ScreenType: ScreenProtocol,
+    ScreenType: Hashable,
     RootView: View,
     PotentialView: View
 >: View {

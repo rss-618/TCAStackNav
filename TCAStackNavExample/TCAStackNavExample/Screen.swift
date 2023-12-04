@@ -11,7 +11,7 @@ import ComposableArchitecture
 
 public struct Screen: ScreenProtocol {    
     
-    public enum State {
+    public enum State: Hashable {
         case page(Page.State)
     }
     

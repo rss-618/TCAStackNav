@@ -32,17 +32,13 @@ struct ContentView: View {
 struct Content: Reducer {
 
     struct State: NavStateProtocol {
-        var stack: [Wrapper<Screen>] = [
-            .push(.init()),
-            .push(.init(text: "two")),
-            .push(.init(text: "three")),
-            .push(.init(text: "four")),
-            .push(.init(text: "five"))
+        var stack: [Wrapper<Screen.State>] = [
+            .push(.page(.init())
         ]
     }
     
-    struct Action: NavActionProtocol {
-    case nodeAction(_ index: Int, action: Screen.)
+    enum Action: NavActionProtocol {
+    case nodeAction(_ index: Int, action: Screen.Action)
     }
     
     var body: some ReducerOf<Self> {
@@ -52,6 +48,6 @@ struct Content: Reducer {
             break
           }
           return .none
-        }.fo
+        }
       }
 }
