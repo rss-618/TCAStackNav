@@ -15,10 +15,20 @@ struct ContentView: View {
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            NavStack<Content, Text, Text>(store: store) {
+            NavStack<Content, Text, SwitchStore<ExampleScreen.State, ExampleScreen.Action, CaseLet<ExampleScreen.State, ExampleScreen.Action, Page.State, Page.Action, PageView>>>(store: store) {
                 Text("First Page")
-            } potentialScreens: { state in
-                Text("Other")
+            } potentialScreens: { store in
+                SwitchStore(store) { state in
+                    switch state {
+                    case .page:
+                        CaseLet(
+                            /Content.Screen.State.page,
+                            action: Content.Screen.Action.page,
+                            then: PageView.init
+                        )
+                    }
+                    
+                }
             }
         }
         
@@ -58,6 +68,8 @@ struct Content: CoordinatorProtocol {
         
         Reduce { state, action in
             switch action {
+            case .stack(.element(id: _, action: .page(.popToRoot))):
+                state.stack.removeAll()
             default:
                 break
             }
