@@ -20,7 +20,7 @@ public struct NavStack<
     
     public init(store: StoreOf<Coordinator>,
                 @ViewBuilder _ rootView: () -> RootView,
-                potentialScreens: @escaping (Store<Coordinator.Screen.State, Coordinator.Screen.Action>) -> PotentialView) {
+                @ViewBuilder potentialScreens: @escaping (Store<Coordinator.Screen.State, Coordinator.Screen.Action>) -> PotentialView) {
         self.store = store
         self.root = rootView()
         self.potentialScreens = potentialScreens

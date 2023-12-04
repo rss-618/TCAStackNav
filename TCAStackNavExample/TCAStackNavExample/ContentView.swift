@@ -20,12 +20,9 @@ struct ContentView: View {
                     Text("First Page")
                 }
                 .padding()
-            } potentialScreens: { wrapper in
-                switch wrapper.screen {
-                case .page(let state):
-                    PageView(store: StoreOf<Page>(initialState: state) {
-                        Page()
-                    })
+            } potentialScreens: { state in
+                switch state {
+                case .
                 }
             }
         }
@@ -41,6 +38,8 @@ struct Content: CoordinatorProtocol {
     typealias Screen = ExampleScreen
     
     class State: NavStateProtocol, Equatable {
+        typealias Screen = ExampleScreen
+        
         var id : UUID
         
         static func == (lhs: Content.State, rhs: Content.State) -> Bool {
@@ -55,6 +54,8 @@ struct Content: CoordinatorProtocol {
     }
     
     enum Action: NavActionProtocol {
+        typealias Screen = ExampleScreen
+        
         case stack(StackAction<Screen.State, Screen.Action>)
     }
     
