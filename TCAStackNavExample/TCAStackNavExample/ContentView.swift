@@ -9,7 +9,9 @@ import SwiftUI
 import TCAStackNav
 
 struct ContentView: View {
+    
     @State var additionalScreens: [Wrapper<Screen>] = [.push(.init(text: "one"))]
+    
     var body: some View {
         NavStack($additionalScreens) {
             VStack {
@@ -20,7 +22,6 @@ struct ContentView: View {
             }
             .padding()
         }
-        
     }
 }
 
