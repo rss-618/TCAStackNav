@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol NavStateProtocol: Equatable {
+public protocol NavStateProtocol {
     associatedtype Screen: ScreenProtocol
     
     var stack: [Wrapper<Screen>] { get set }

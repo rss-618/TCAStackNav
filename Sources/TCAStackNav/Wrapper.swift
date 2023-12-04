@@ -8,15 +8,15 @@
 import Foundation
 import ComposableArchitecture
 
-public enum Wrapper<State: Hashable> {
+public enum Wrapper<Screen: ScreenProtocol> {
     
-    case push(State, animation: WrapprAnimation = .basic)
+    case push(Screen, animation: WrapprAnimation = .basic)
     
-    public var state: State {
+    public var screen: Screen {
       get {
         switch self {
-        case .push(let state, _):
-          return state
+        case .push(let screen, _):
+          return screen
         }
       }
       set {
@@ -30,7 +30,7 @@ public enum Wrapper<State: Hashable> {
 
 extension Wrapper: Hashable {
     public static func == (lhs: Wrapper, rhs: Wrapper) -> Bool {
-        lhs.state == rhs.state
+        lhs.screen == rhs.screen
     }
     
 }

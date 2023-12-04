@@ -9,17 +9,17 @@ import SwiftUI
 import ComposableArchitecture
 
 public struct NavStack<
-    ScreenState: Hashable,
+    ScreenType: ScreenProtocol,
     RootView: View,
     PotentialView: View
 >: View {
     let root: RootView
-    @Binding var stack: [Wrapper<ScreenState>]
-    var potentialScreens: (Wrapper<ScreenState>) -> PotentialView
+    @Binding var stack: [Wrapper<ScreenType>]
+    var potentialScreens: (Wrapper<ScreenType>) -> PotentialView
     
-    public init(_ stack: Binding<[Wrapper<ScreenState>]>,
+    public init(_ stack: Binding<[Wrapper<ScreenType>]>,
                 @ViewBuilder _ rootView: () -> RootView,
-                @ViewBuilder potentialScreens: @escaping (Wrapper<ScreenState>) -> PotentialView) {
+                @ViewBuilder potentialScreens: @escaping (Wrapper<ScreenType>) -> PotentialView) {
         self._stack = stack
         self.root = rootView()
         self.potentialScreens = potentialScreens
@@ -27,7 +27,7 @@ public struct NavStack<
     
     public var body: some View {
         NavigationStack(path: $stack) {
-            root.navigationDestination(for: Wrapper<ScreenState>.self) { wrapper in
+            root.navigationDestination(for: Wrapper<ScreenType>.self) { wrapper in
                 potentialScreens(wrapper)
             }
         }
