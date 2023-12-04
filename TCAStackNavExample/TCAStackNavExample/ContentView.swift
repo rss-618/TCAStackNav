@@ -11,11 +11,11 @@ import ComposableArchitecture
 
 struct ContentView: View {
     
-    let store = StoreOf<Content>
+    let store: StoreOf<Content>
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            NavStack($additionalScreens) {
+            NavStack(viewStore.binding(get: \.stack, send: { .updateStack($0) })) {
                 VStack {
                     Image(systemName: "globe")
                         .imageScale(.large)
@@ -23,35 +23,40 @@ struct ContentView: View {
                     Text("Hello, world!")
                 }
                 .padding()
+            } potentialScreens: { wrapper in
+                SwitchStore(StoreOf(initialState: wrapper.screen, reducer: Screen())) {
+                    
+                }
             }
         }
         
+    }
+    
+    public init(store: StoreOf<Content>) {
+        self.store = store
     }
 }
 
 struct Content: Reducer {
 
-    struct State: NavStateProtocol {
-        var stack: [Wrapper<Screen>] = [
-            .push(.init(text: "one")),
-            .push(.init(text: "two")),
-            .push(.init(text: "three")),
-            .push(.init(text: "four")),
-            .push(.init(text: "five"))
-        ]
+    struct State: NavStateProtocol, Equatable {
+        var stack: [Wrapper<Screen>] = []
     }
     
-    struct Action: NavActionProtocol {
-    case nodeAction(_ index: Int, action: Screen.)
+    enum Action: NavActionProtocol {
+        case nodeAction(_ index: Int, action: Screen.Action)
+        case updateStack([Wrapper<Screen>])
     }
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
-          switch action {
-          default:
-            break
-          }
-          return .none
-        }.fo
-      }
+            switch action {
+            case .updateStack(let stack):
+                state.stack = stack
+            default:
+                break
+            }
+            return .none
+        }
+    }
 }

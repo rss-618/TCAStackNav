@@ -9,7 +9,7 @@ import SwiftUI
 import TCAStackNav
 import ComposableArchitecture
 
-public struct Screen: ScreenProtocol {    
+public struct Screen: ScreenProtocol {
     
     public enum State {
         case page(Page.State)
