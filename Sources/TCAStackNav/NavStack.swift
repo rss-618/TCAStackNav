@@ -15,10 +15,10 @@ public struct NavStack<
 >: View {
     
     let root: RootView
-    let store: Store<Coordinator.State, Coordinator.Action>
+    let store: StoreOf<Coordinator>
     var potentialScreens: (Store<Coordinator.Screen.State, Coordinator.Screen.Action>) -> PotentialView
     
-    public init(store: Store<Coordinator.State, Coordinator.Action>,
+    public init(store: StoreOf<Coordinator>,
                 @ViewBuilder _ rootView: () -> RootView,
                 potentialScreens: @escaping (Store<Coordinator.Screen.State, Coordinator.Screen.Action>) -> PotentialView) {
         self.store = store
