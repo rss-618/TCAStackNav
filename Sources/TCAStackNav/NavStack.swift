@@ -12,7 +12,7 @@ public struct NavStack<ScreenType: ScreenProtocol, RootView: View>: View {
     let root: RootView
     @Binding var stack: [Wrapper<ScreenType>]
     
-    public init(_ stack: Binding<[Wrapper<ScreenType>]>, _ rootView: () -> RootView) throws {
+    public init(_ stack: Binding<[Wrapper<ScreenType>]>, _ rootView: () -> RootView) {
         self._stack = stack
         self.root = rootView()
     }
