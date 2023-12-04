@@ -6,9 +6,8 @@
 //
 
 import Foundation
+import ComposableArchitecture
 
-public protocol NavStateProtocol {
-    associatedtype Screen: Hashable
-    
-    var stack: [Wrapper<Screen>] { get set }
+public class NavStateProtocol<Screen: ScreenProtocol> {
+    var stack: StackState<Screen.State> = .init()
 }

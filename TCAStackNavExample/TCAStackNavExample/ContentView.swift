@@ -61,6 +61,6 @@ struct Content: Reducer {
             break
           }
           return .none
-        }.forEach(<#T##toElementsState: WritableKeyPath<_, IdentifiedArray<Hashable, ElementState>>##WritableKeyPath<_, IdentifiedArray<Hashable, ElementState>>#>, action: <#T##KeyPath<Case<_>, Case<IdentifiedAction<Hashable, ElementAction>>>#>, element: <#T##() -> Reducer#>)
-      }
+        }
+    }
 }

@@ -8,8 +8,9 @@
 import Foundation
 import ComposableArchitecture
 
-public protocol NavActionProtocol {
-    associatedtype Action
-    
-    static func nodeAction(_ index: Int, action: Action) -> Self
+public class NavActionProtocol<Screen: ScreenProtocol> {
+    required init() { }
+    static func stack(_: StackAction<Screen.State, Screen.Action>) -> Self {
+        return self.init()
+    } // To be inhertied by enum
 }
