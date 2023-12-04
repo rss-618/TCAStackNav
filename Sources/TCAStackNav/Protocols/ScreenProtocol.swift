@@ -8,6 +8,4 @@
 import SwiftUI
 import ComposableArchitecture
 
-public protocol ScreenProtocol: Hashable, Reducer {
-    
-}
+public protocol ScreenProtocol: Hashable, Reducer { }

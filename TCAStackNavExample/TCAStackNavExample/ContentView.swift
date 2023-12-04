@@ -33,7 +33,7 @@ struct Content: Reducer {
 
     struct State: NavStateProtocol {
         var stack: [Wrapper<Screen>] = [
-            .push(.init(text: "one")),
+            .push(.init()),
             .push(.init(text: "two")),
             .push(.init(text: "three")),
             .push(.init(text: "four")),

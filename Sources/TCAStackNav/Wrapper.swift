@@ -8,7 +8,7 @@
 import Foundation
 import ComposableArchitecture
 
-public enum Wrapper<Screen: ScreenProtocol> {
+public enum Wrapper<Screen: Hashable> {
     
     case push(Screen, animation: WrapprAnimation = .basic)
     
