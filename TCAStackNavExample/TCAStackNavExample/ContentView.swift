@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            NavStack(viewStore.binding(get: \.stack, send: { .setStack($0) })) {
+            NavStack(store: store) {
                 VStack {
                     Text("First Page")
                 }
@@ -37,36 +37,36 @@ struct ContentView: View {
     }
 }
 
-struct Content: CoordinatorProtocol<Screen> {
+struct Content: CoordinatorProtocol {
+    typealias Screen = ExampleScreen
     
-    class State: NavStateProtocol<Screen>, Equatable {
+    class State: NavStateProtocol, Equatable {
+        var id : UUID
+        
         static func == (lhs: Content.State, rhs: Content.State) -> Bool {
-            <#code#>
+            lhs.id == rhs.id
         }
         
-        var stack: [Wrapper<Screen.State>] = [
-            .push(.page(.init("Hello Dude"))),
-            .push(.page(.init("Cmon Man")))
-        ]
+        var stack: StackState<Screen.State>  = .init()
+        
+        public init(id: UUID = UUID()) {
+            self.id = id
+        }
     }
     
-    enum Action: NavActionProtocol<Screen> {
-        typealias RawValue = Screen
-        
-        case nodeAction(_ index: Int, action: Screen.Action)
-        case stack([Wrapper<Screen.State>])
+    enum Action: NavActionProtocol {
+        case stack(StackAction<Screen.State, Screen.Action>)
     }
     
     var body: some ReducerOf<Self> {
         
         Reduce { state, action in
-          switch action {
-          case .nodeAction(_, action: .page(.popToRoot)):
-              state.stack.removeAll()
-          default:
-            break
-          }
-          return .none
+            switch action {
+            default:
+                break
+            }
+            return .none
         }
     }
+    
 }

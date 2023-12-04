@@ -14,7 +14,6 @@ public struct NavStack<
     PotentialView: View
 >: View {
     
-    
     let root: RootView
     let store: Store<Coordinator.State, Coordinator.Action>
     var potentialScreens: (Store<Coordinator.Screen.State, Coordinator.Screen.Action>) -> PotentialView
