@@ -37,18 +37,24 @@ struct ContentView: View {
     }
 }
 
-struct Content: Reducer {
-
-    struct State: NavStateProtocol, Equatable {
+struct Content: CoordinatorProtocol<Screen> {
+    
+    class State: NavStateProtocol<Screen>, Equatable {
+        static func == (lhs: Content.State, rhs: Content.State) -> Bool {
+            <#code#>
+        }
+        
         var stack: [Wrapper<Screen.State>] = [
             .push(.page(.init("Hello Dude"))),
             .push(.page(.init("Cmon Man")))
         ]
     }
     
-    enum Action: NavActionProtocol {
+    enum Action: NavActionProtocol<Screen> {
+        typealias RawValue = Screen
+        
         case nodeAction(_ index: Int, action: Screen.Action)
-        case setStack([Wrapper<Screen.State>])
+        case stack([Wrapper<Screen.State>])
     }
     
     var body: some ReducerOf<Self> {

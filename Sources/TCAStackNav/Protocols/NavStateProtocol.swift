@@ -8,6 +8,7 @@
 import Foundation
 import ComposableArchitecture
 
-public class NavStateProtocol<Screen: ScreenProtocol> {
-    var stack: StackState<Screen.State> = .init()
+public protocol NavStateProtocol {
+    associatedtype Screen: ScreenProtocol
+    var stack: StackState<Screen.State> { get set }
 }

@@ -8,6 +8,9 @@
 import SwiftUI
 import ComposableArchitecture
 
-public protocol CoordinatorProtocol: Reducer where State: NavStateProtocol<Screen>, Action: NavActionProtocol<Screen> {
+public protocol CoordinatorProtocol: Reducer where Action: NavActionProtocol,
+                                                   Action.Screen == Screen,
+                                                   State: NavStateProtocol,
+                                                   State.Screen == Screen {
     associatedtype Screen: ScreenProtocol
 }
