@@ -13,6 +13,13 @@ public struct Screen: ScreenProtocol {
     
     public enum State: Hashable {
         case page(Page.State)
+        
+        public func hash(into hasher: inout Hasher) {
+            switch self {
+            case .page(let state):
+                hasher.combine(state.id.hashValue)
+            }
+        }
     }
     
     public enum Action {

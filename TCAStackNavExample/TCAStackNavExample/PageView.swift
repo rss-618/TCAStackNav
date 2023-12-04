@@ -31,9 +31,11 @@ public struct PageView: View {
 public struct Page: Reducer {
     
     public struct State: Equatable {
+        var id: UUID
         var text: String
         
-        init(_ text: String) {
+        init(id: UUID = UUID(), _ text: String) {
+            self.id = id
             self.text = text
         }
     }

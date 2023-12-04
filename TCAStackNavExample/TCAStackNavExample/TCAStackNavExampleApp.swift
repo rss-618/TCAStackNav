@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct TCAStackNavExampleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(store: StoreOf<Content>(initialState: .init(), reducer: {
+                Content()
+            }))
         }
     }
 }
