@@ -9,14 +9,18 @@ import SwiftUI
 import TCAStackNav
 
 struct ContentView: View {
+    @State var additionalScreens: [Wrapper<Screen>] = [.push(.init(text: "one"))]
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavStack($additionalScreens) {
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
+            }
+            .padding()
         }
-        .padding()
+        
     }
 }
 
