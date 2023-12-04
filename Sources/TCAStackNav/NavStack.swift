@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-public struct NavStack<ScreenType: ScreenProtocol, RootView: View> {
+public struct NavStack<ScreenType: ScreenProtocol, RootView: View>: View {
     let root: RootView
     @Binding var stack: [Wrapper<ScreenType>]
     
