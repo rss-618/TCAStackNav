@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E80090D62B1D60C40070F8DD /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80090D52B1D60C40070F8DD /* Screen.swift */; };
+		E80090D82B1D6C0C0070F8DD /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80090D72B1D6C0C0070F8DD /* PageView.swift */; };
 		E8A1A39B2B1D5C7A001F157A /* TCAStackNavExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A1A39A2B1D5C7A001F157A /* TCAStackNavExampleApp.swift */; };
 		E8A1A39D2B1D5C7A001F157A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A1A39C2B1D5C7A001F157A /* ContentView.swift */; };
 		E8A1A39F2B1D5C7D001F157A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8A1A39E2B1D5C7D001F157A /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		E80090D52B1D60C40070F8DD /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		E80090D72B1D6C0C0070F8DD /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		E8A1A3972B1D5C7A001F157A /* TCAStackNavExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCAStackNavExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A1A39A2B1D5C7A001F157A /* TCAStackNavExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCAStackNavExampleApp.swift; sourceTree = "<group>"; };
 		E8A1A39C2B1D5C7A001F157A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				E8A1A39E2B1D5C7D001F157A /* Assets.xcassets */,
 				E8A1A3A02B1D5C7D001F157A /* Preview Content */,
 				E80090D52B1D60C40070F8DD /* Screen.swift */,
+				E80090D72B1D6C0C0070F8DD /* PageView.swift */,
 			);
 			path = TCAStackNavExample;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			files = (
 				E8A1A39D2B1D5C7A001F157A /* ContentView.swift in Sources */,
 				E8A1A39B2B1D5C7A001F157A /* TCAStackNavExampleApp.swift in Sources */,
+				E80090D82B1D6C0C0070F8DD /* PageView.swift in Sources */,
 				E80090D62B1D60C40070F8DD /* Screen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

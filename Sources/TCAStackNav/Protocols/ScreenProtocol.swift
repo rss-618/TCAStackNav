@@ -8,8 +8,9 @@
 import SwiftUI
 import ComposableArchitecture
 
-public protocol ScreenProtocol: Hashable {
+public protocol ScreenProtocol: Hashable, Reducer {
     associatedtype ScreenView: View
     
     var view: ScreenView { get }
+    
 }

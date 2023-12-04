@@ -7,24 +7,51 @@
 
 import SwiftUI
 import TCAStackNav
+import ComposableArchitecture
 
 struct ContentView: View {
     
-    @State var additionalScreens: [Wrapper<Screen>] = [.push(.init(text: "one"))]
+    let store = StoreOf<Content>
     
     var body: some View {
-        NavStack($additionalScreens) {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            NavStack($additionalScreens) {
+                VStack {
+                    Image(systemName: "globe")
+                        .imageScale(.large)
+                        .foregroundStyle(.tint)
+                    Text("Hello, world!")
+                }
+                .padding()
             }
-            .padding()
         }
+        
     }
 }
 
-#Preview {
-    ContentView()
+struct Content: Reducer {
+
+    struct State: NavStateProtocol {
+        var stack: [Wrapper<Screen>] = [
+            .push(.init(text: "one")),
+            .push(.init(text: "two")),
+            .push(.init(text: "three")),
+            .push(.init(text: "four")),
+            .push(.init(text: "five"))
+        ]
+    }
+    
+    struct Action: NavActionProtocol {
+    case nodeAction(_ index: Int, action: Screen.)
+    }
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+          switch action {
+          default:
+            break
+          }
+          return .none
+        }.fo
+      }
 }

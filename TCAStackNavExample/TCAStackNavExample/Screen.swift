@@ -7,18 +7,27 @@
 
 import SwiftUI
 import TCAStackNav
+import ComposableArchitecture
 
-public struct Screen: ScreenProtocol {
+public struct Screen: Reducer {
     
-    public init(text: String) {
-        self.text = text
+    public enum State {
+        case page(Page.State)
+    }
+    
+    public enum Action {
+        case page(Page.Action)
+    }
+    
+    public var caseLet: some View {
         
     }
     
-    let text: String
-    
-    public var view: some View {
-        Text(text)
+    public var body: some ReducerOf<Self> {
+        Scope(state: /State.page, action: /Action.page) {
+          Page()
+        }
     }
+   
     
 }
