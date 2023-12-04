@@ -15,15 +15,10 @@ struct ContentView: View {
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            NavStack(store: store) {
-                VStack {
-                    Text("First Page")
-                }
-                .padding()
+            NavStack<Content, Text, Text>(store: store) {
+                Text("First Page")
             } potentialScreens: { state in
-                switch state {
-                case .
-                }
+                Text("Other")
             }
         }
         
@@ -46,7 +41,7 @@ struct Content: CoordinatorProtocol {
             lhs.id == rhs.id
         }
         
-        var stack: StackState<Screen.State>  = .init()
+        var stack: StackState<Screen.State>  = .init([.page(.init("Page"))])
         
         public init(id: UUID = UUID()) {
             self.id = id
