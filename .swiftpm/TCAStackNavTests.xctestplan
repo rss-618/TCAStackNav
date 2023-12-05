@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "731E621E-982A-4C1C-9DD2-E29CAF51D6A7",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "uiTestingScreenshotsLifetime" : "keepNever"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "TCAStackNavTests",
+        "name" : "TCAStackNavTests"
+      }
+    }
+  ],
+  "version" : 1
+}
