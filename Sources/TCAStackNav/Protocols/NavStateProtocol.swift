@@ -10,5 +10,5 @@ import ComposableArchitecture
 
 public protocol NavStateProtocol {
     associatedtype Screen: ScreenProtocol
-    var stack: StackState<Screen.State> { get set }
+    var stack: IdentifiedArrayOf<Screen.State> { get set }
 }

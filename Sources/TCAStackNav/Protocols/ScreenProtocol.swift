@@ -7,5 +7,8 @@
 
 import SwiftUI
 import ComposableArchitecture
+ 
+public protocol ScreenProtocol: Hashable, Reducer where State: Identifiable,
+                                                        State: Equatable,
+                                                        State: Hashable {}
 
-public protocol ScreenProtocol: Hashable, Reducer { }
