@@ -14,24 +14,21 @@ struct ContentView: View {
     let store: StoreOf<Content>
     
     var body: some View {
-        WithViewStore(store, observe: { $0 }) { viewStore in
-            NavStack<Content, Text, SwitchStore<ExampleScreen.State, ExampleScreen.Action, CaseLet<ExampleScreen.State, ExampleScreen.Action, Page.State, Page.Action, PageView>>>(store: store) {
-                Text("First Page")
-            } potentialScreens: { store in
-                SwitchStore(store) { state in
-                    switch state {
-                    case .page:
-                        CaseLet(
-                            /Content.Screen.State.page,
-                            action: Content.Screen.Action.page,
-                            then: PageView.init
-                        )
-                    }
-                    
+        NavStack(store: store) {
+            Text("First Page")
+        } potentialScreens: { store in
+            SwitchStore(store) { state in
+                switch state {
+                case .page:
+                    CaseLet(
+                        /Content.Screen.State.page,
+                        action: Content.Screen.Action.page,
+                        then: PageView.init
+                    )
                 }
+                
             }
         }
-        
     }
     
     public init(store: StoreOf<Content>) {

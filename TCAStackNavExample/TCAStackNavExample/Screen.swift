@@ -11,13 +11,21 @@ import ComposableArchitecture
 
 public struct ExampleScreen: ScreenProtocol {    
     
-    public enum State: Hashable {
+    public enum State: Hashable, Identifiable {
+        
         case page(Page.State)
         
         public func hash(into hasher: inout Hasher) {
             switch self {
             case .page(let state):
                 hasher.combine(state.id.hashValue)
+            }
+        }
+        
+        public var id: UUID {
+            switch self {
+            case .page(let state):
+                state.id
             }
         }
     }

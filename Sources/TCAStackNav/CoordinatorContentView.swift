@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-public struct NavStack<
+public struct CoordinatorContentView<
     Coordinator: CoordinatorProtocol,
     RootView: View,
     PotentialView: View
@@ -27,8 +27,11 @@ public struct NavStack<
     }
     
     public var body: some View {
-        NavigationStackStore(self.store.scope(state: \.stack,
-                                              action: { .stack($0) })
+        NavigationStackStore<Coordinator.Screen.State,
+                             Coordinator.Screen.Action,
+                             RootView,
+                             PotentialView> (self.store.scope(state: \.stack,
+                                                              action: { .stack($0) })
         ) {
             root
         } destination: { store in
