@@ -9,13 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 
 public protocol CoordinatorProtocol: Reducer where Action: NavActionProtocol,
+                                                   Action.Screen == Screen,
                                                    State: NavStateProtocol,
-                                                   State.Screen == Action.Screen { }
-
-public extension CoordinatorProtocol {
-    func forEachScreen(@ReducerBuilder<State.Screen.State, State.Screen.Action> screenReducer: () -> State.Screen) -> some ReducerOf<Self> {
-        return self.forEach(\.stack, action: /Action.stack) {
-            screenReducer()
-        }
-    }
+                                                   State.Screen == Screen {
+    associatedtype Screen: ScreenProtocol
 }
